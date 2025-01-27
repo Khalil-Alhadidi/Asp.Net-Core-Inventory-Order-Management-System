@@ -52,6 +52,11 @@ public class DataContext : IdentityDbContext<ApplicationUser>, IEntityDbSet
     public DbSet<PositiveAdjustment> PositiveAdjustment { get; set; }
     public DbSet<Scrapping> Scrapping { get; set; }
 
+    // by Khalil
+    public DbSet<Color> Colors { get; set; }
+
+    public DbSet<MyItem> MyItems { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -94,6 +99,10 @@ public class DataContext : IdentityDbContext<ApplicationUser>, IEntityDbSet
         modelBuilder.ApplyConfiguration(new NegativeAdjustmentConfiguration());
         modelBuilder.ApplyConfiguration(new PositiveAdjustmentConfiguration());
         modelBuilder.ApplyConfiguration(new ScrappingConfiguration());
+        
+        modelBuilder.ApplyConfiguration(new ColorConfiguration());
+        modelBuilder.ApplyConfiguration(new MyItemConfiguration());
+
 
     }
 

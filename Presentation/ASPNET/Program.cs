@@ -1,6 +1,7 @@
 using ASPNET.BackEnd;
 using ASPNET.BackEnd.Common.Middlewares;
 using ASPNET.FrontEnd;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,18 +13,26 @@ if (!Directory.Exists(logPath))
 }
 
 builder.Services.AddBackEndServices(builder.Configuration);
+builder.Services.AddOpenApi();
 builder.Services.AddFrontEndServices();
 
 var app = builder.Build();
 
 app.RegisterBackEndBuilder(app.Environment, app, builder.Configuration);
 
+app.MapOpenApi();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
     app.UseHsts();
+  
 }
 
+if (app.Environment.IsDevelopment())
+{
+    app.MapScalarApiReference();
+}
 app.UseRouting();
 app.UseCors();
 app.UseMiddleware<GlobalApiExceptionHandlerMiddleware>();

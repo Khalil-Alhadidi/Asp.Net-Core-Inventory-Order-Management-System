@@ -42,5 +42,10 @@ public interface IEntityDbSet
     public DbSet<NegativeAdjustment> NegativeAdjustment { get; set; }
     public DbSet<PositiveAdjustment> PositiveAdjustment { get; set; }
     public DbSet<Scrapping> Scrapping { get; set; }
+
+    public DbSet<Color> Colors { get; set; }
+    public DbSet<MyItem> MyItems { get; set; }
+
+
 }
 

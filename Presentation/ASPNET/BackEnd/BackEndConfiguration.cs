@@ -68,6 +68,9 @@ public static class BackEndConfiguration
         });
 
 
+
+       
+
         services.Configure<ApiBehaviorOptions>(x =>
         {
             x.SuppressModelStateInvalidFilter = true;
@@ -105,12 +108,17 @@ public static class BackEndConfiguration
         if (environment.IsDevelopment())
         {
             app.UseSwagger();
+          
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Indotalent V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Learn  - Indotalent V1");
             });
+            
+            
+            
         }
 
+        
         return app;
     }
 
